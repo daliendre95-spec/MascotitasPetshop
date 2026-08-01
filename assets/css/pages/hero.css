@@ -7,7 +7,7 @@
     padding: 2rem 1rem;
     background-image:
       linear-gradient(rgba(89, 84, 66, 0.75), rgba(73, 73, 48, 0.75)),
-      url("../img/hero.jpg");
+      url("../../img/hero.jpg");
     background-size: cover;
     background-position: -40% center;
     background-repeat: no-repeat;
