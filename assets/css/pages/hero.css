@@ -43,4 +43,8 @@
     max-width: 280px;
   }
 
-  
+  @media (max-width: 768px) {
+    .hero {
+      background-position: center center;
+    }
+  }
