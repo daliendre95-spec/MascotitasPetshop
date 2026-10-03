@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import ProductosPage from './pages/ProductosPage'
 import GaleriaPage from './pages/GaleriaPage'
+import ContactoPage from './pages/ContactoPage'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="productos" element={<ProductosPage />} />
         <Route path="galeria" element={<GaleriaPage />} />
+        <Route path="contacto" element={<ContactoPage />} />
       </Route>
     </Routes>
   )
