@@ -28,7 +28,7 @@ const CONTACT_INFO = [
 ]
 
 function Contact() {
-  const { formData, handleChange, handleInteresChange, handleSubmit, handleReset } =
+  const { formData, isSubmitted, handleChange, handleInteresChange, handleSubmit, handleReset } =
     useContactForm()
 
   return (
@@ -44,6 +44,19 @@ function Contact() {
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} onReset={handleReset}>
+          {isSubmitted && (
+            <div
+              className="contact-success alert alert-success"
+              role="status"
+              aria-live="polite"
+            >
+              <i className="fa-solid fa-circle-check" aria-hidden="true" />
+              <span>
+                ¡Formulario enviado! En breve nos contactaremos con vos. ¡Gracias por escribirnos!
+              </span>
+            </div>
+          )}
+
           <div className="form-group mb-3">
             <label htmlFor="nombre" className="form-label">
               Nombre

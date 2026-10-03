@@ -28,6 +28,7 @@ function buildPayload(formData) {
  */
 export function useContactForm() {
   const [formData, setFormData] = useState(INITIAL_FORM)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const logFieldUpdate = (field, value) => {
     console.log('[Contacto] input:', { campo: field, valor: value })
@@ -35,12 +36,14 @@ export function useContactForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
+    setIsSubmitted(false)
     logFieldUpdate(name, value)
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleInteresChange = (event) => {
     const { value, checked } = event.target
+    setIsSubmitted(false)
     setFormData((prev) => {
       const intereses = checked
         ? [...prev.intereses, value]
@@ -55,16 +58,19 @@ export function useContactForm() {
     const payload = buildPayload(formData)
     console.log('[Contacto] submit:', payload)
     setFormData({ ...INITIAL_FORM, intereses: [] })
+    setIsSubmitted(true)
     console.log('[Contacto] reset: formulario limpiado tras enviar')
   }
 
   const handleReset = () => {
     setFormData(INITIAL_FORM)
+    setIsSubmitted(false)
     console.log('[Contacto] reset: formulario limpiado')
   }
 
   return {
     formData,
+    isSubmitted,
     handleChange,
     handleInteresChange,
     handleSubmit,
