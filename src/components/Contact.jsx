@@ -1,16 +1,5 @@
-import { useState } from 'react'
-
+import { useContactForm } from '../hooks/useContactForm'
 import '../styles/contact.css'
-
-const INITIAL_FORM = {
-  nombre: '',
-  email: '',
-  telefono: '',
-  motivo: '',
-  mascota: 'perro',
-  intereses: [],
-  comentarios: '',
-}
 
 const MOTIVO_OPTIONS = [
   { value: 'consulta', label: 'Consulta sobre producto' },
@@ -39,42 +28,8 @@ const CONTACT_INFO = [
 ]
 
 function Contact() {
-  const [formData, setFormData] = useState(INITIAL_FORM)
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleInteresChange = (event) => {
-    const { value, checked } = event.target
-    setFormData((prev) => ({
-      ...prev,
-      intereses: checked
-        ? [...prev.intereses, value]
-        : prev.intereses.filter((item) => item !== value),
-    }))
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-
-    const payload = {
-      nombre: formData.nombre,
-      email: formData.email,
-      telefono: formData.telefono,
-      motivo: formData.motivo,
-      mascota: formData.mascota,
-      intereses: formData.intereses,
-      comentarios: formData.comentarios,
-    }
-
-    console.log('Datos del formulario de contacto:', payload)
-  }
-
-  const handleReset = () => {
-    setFormData(INITIAL_FORM)
-  }
+  const { formData, handleChange, handleInteresChange, handleSubmit, handleReset } =
+    useContactForm()
 
   return (
     <section className="contact-section">
@@ -89,12 +44,15 @@ function Contact() {
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} onReset={handleReset}>
-          <div className="form-group">
-            <label htmlFor="nombre">Nombre</label>
+          <div className="form-group mb-3">
+            <label htmlFor="nombre" className="form-label">
+              Nombre
+            </label>
             <input
               type="text"
               id="nombre"
               name="nombre"
+              className="form-control"
               value={formData.nombre}
               onChange={handleChange}
               placeholder="Tu nombre completo"
@@ -102,12 +60,15 @@ function Contact() {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          <div className="form-group mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
+              className="form-control"
               value={formData.email}
               onChange={handleChange}
               placeholder="tu@email.com"
@@ -115,12 +76,15 @@ function Contact() {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="telefono">Teléfono</label>
+          <div className="form-group mb-3">
+            <label htmlFor="telefono" className="form-label">
+              Teléfono
+            </label>
             <input
               type="tel"
               id="telefono"
               name="telefono"
+              className="form-control"
               value={formData.telefono}
               onChange={handleChange}
               placeholder="11 1234-5678"
@@ -128,11 +92,14 @@ function Contact() {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="motivo">Motivo de contacto</label>
+          <div className="form-group mb-3">
+            <label htmlFor="motivo" className="form-label">
+              Motivo de contacto
+            </label>
             <select
               id="motivo"
               name="motivo"
+              className="form-select"
               value={formData.motivo}
               onChange={handleChange}
               required
@@ -146,7 +113,7 @@ function Contact() {
             </select>
           </div>
 
-          <fieldset className="form-group">
+          <fieldset className="form-group mb-3">
             <legend>¿Qué mascota tenés?</legend>
             {MASCOTA_OPTIONS.map(({ value, label }) => (
               <label key={value}>
@@ -162,7 +129,7 @@ function Contact() {
             ))}
           </fieldset>
 
-          <fieldset className="form-group">
+          <fieldset className="form-group mb-3">
             <legend>¿Qué te interesa? (podés elegir varios)</legend>
             {INTERES_OPTIONS.map(({ value, label }) => (
               <label key={value}>
@@ -178,11 +145,14 @@ function Contact() {
             ))}
           </fieldset>
 
-          <div className="form-group">
-            <label htmlFor="comentarios">Comentarios</label>
+          <div className="form-group mb-3">
+            <label htmlFor="comentarios" className="form-label">
+              Comentarios
+            </label>
             <textarea
               id="comentarios"
               name="comentarios"
+              className="form-control"
               value={formData.comentarios}
               onChange={handleChange}
               placeholder="Contanos qué producto buscás o tu consulta..."
@@ -191,7 +161,7 @@ function Contact() {
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="btn">
+            <button type="submit" className="btn btn-primary">
               <i className="fa-solid fa-paper-plane" aria-hidden="true" />
               Enviar
             </button>
