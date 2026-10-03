@@ -1,0 +1,12 @@
+.cards-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1rem 5rem;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
