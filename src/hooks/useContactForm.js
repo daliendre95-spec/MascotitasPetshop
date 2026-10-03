@@ -54,6 +54,8 @@ export function useContactForm() {
     event.preventDefault()
     const payload = buildPayload(formData)
     console.log('[Contacto] submit:', payload)
+    setFormData({ ...INITIAL_FORM, intereses: [] })
+    console.log('[Contacto] reset: formulario limpiado tras enviar')
   }
 
   const handleReset = () => {
