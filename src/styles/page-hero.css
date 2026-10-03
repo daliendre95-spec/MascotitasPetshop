@@ -1,0 +1,18 @@
+.page-hero {
+  background-color: var(--color-light);
+  padding: 3rem 1rem 2.5rem;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  color: var(--color-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
