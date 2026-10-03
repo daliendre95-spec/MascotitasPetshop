@@ -9,6 +9,10 @@
   align-items: start;
 }
 
+.contact-wrapper > * {
+  min-width: 0;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -141,6 +145,10 @@ fieldset.form-group input[type='checkbox'] {
 }
 
 @media (max-width: 768px) {
+  .contact-section {
+    padding: 2rem 0 3.5rem;
+  }
+
   .contact-wrapper {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -150,7 +158,20 @@ fieldset.form-group input[type='checkbox'] {
     padding-top: 0;
   }
 
+  .contact-info-item {
+    align-items: flex-start;
+  }
+
   .contact-form {
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions .btn {
+    width: 100%;
   }
 }

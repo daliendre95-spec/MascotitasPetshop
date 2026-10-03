@@ -71,6 +71,13 @@ h3 {
   padding: 0 1rem;
 }
 
+@media (max-width: 768px) {
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.15rem;
+  }
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

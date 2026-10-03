@@ -10,3 +10,13 @@
   gap: 2rem;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .cards-section {
+    padding: 2rem 1rem 3.5rem;
+  }
+
+  .cards-grid {
+    gap: 1.25rem;
+  }
+}

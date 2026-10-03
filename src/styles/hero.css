@@ -44,6 +44,12 @@
 
 @media (max-width: 768px) {
   .hero {
+    min-height: calc(100dvh - 7.5rem);
+    padding: 1.5rem 1rem;
     background-position: center center;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 }
