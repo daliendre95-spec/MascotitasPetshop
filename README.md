@@ -1,53 +1,30 @@
-# MASCOTITAS — Pet Shop (React + Vite)
+# MASCOTITAS - TPF Opción A
 
-Proyecto migrado de HTML/CSS estático a una arquitectura moderna con React, Vite, Bootstrap y React Router.
+Migración a React del pet shop que fui armando en HTML durante la diplomatura.
 
-## Estructura del proyecto
+**Repo:** https://github.com/daliendre95-spec/MascotitasPetshop  
+**Online:** https://daliendre95-spec.github.io/MascotitasPetshop/
 
-```
-src/
-├── assets/          # Recursos estáticos e imágenes
-│   └── data/        # Datos mock para Gallery y Cards
-├── components/      # Navbar, Footer, Layout, Card, Gallery, Contact
-├── hooks/           # Custom hooks (useContactForm)
-├── pages/           # HomePage, ProductosPage, GaleriaPage, ContactoPage
-├── styles/          # CSS individual por componente
-├── App.jsx          # Rutas con React Router
-└── main.jsx         # Punto de entrada
-```
-
-## Repositorio y sitio publicado
-
-- **GitHub:** https://github.com/daliendre95-spec/MascotitasPetshop
-- **GitHub Pages:** https://daliendre95-spec.github.io/MascotitasPetshop/
-
-## Demo formulario de contacto (TPF)
-
-En `/contacto`, abrir DevTools (F12) → **Console**. Al editar campos verás logs `[Contacto] input:`; al enviar, `[Contacto] submit:`; al limpiar, `[Contacto] reset:`.
-
-## Scripts
+## Instalación
 
 ```bash
-npm install    # Instalar dependencias
-npm run dev    # Servidor de desarrollo
-npm run build  # Build de producción
-npm run preview # Vista previa del build
+npm install
+npm run dev
 ```
 
-## Rutas
+En local la url suele ser `http://localhost:5173/MascotitasPetshop/` porque el deploy va a GitHub Pages.
 
-| Ruta        | Página      |
-|-------------|-------------|
-| `/`         | Inicio      |
-| `/productos`| Productos   |
-| `/galeria`  | Galería     |
-| `/contacto` | Contacto    |
+Para generar la carpeta `dist`:
 
-## Dependencias principales
+```bash
+npm run build
+```
 
-- React 19
-- Vite 6
-- Bootstrap 5.3+
-- React Router 7 (v6+ API compatible)
+## Páginas
 
-Los archivos HTML originales se conservaron en `legacy-html/` como referencia.
+- Inicio `/`
+- Productos `/productos`
+- Galería `/galeria`
+- Contacto `/contacto` → acá está el formulario controlado; abrir consola (F12) y probar enviar.
+
+El HTML anterior está en `legacy-html/` por si hay que comparar con la maqueta original.

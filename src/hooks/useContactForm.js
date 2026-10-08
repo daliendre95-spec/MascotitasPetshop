@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const INITIAL_FORM = {
+const formularioVacio = {
   nombre: '',
   email: '',
   telefono: '',
@@ -10,67 +10,49 @@ export const INITIAL_FORM = {
   comentarios: '',
 }
 
-function buildPayload(formData) {
-  return {
-    nombre: formData.nombre,
-    email: formData.email,
-    telefono: formData.telefono,
-    motivo: formData.motivo,
-    mascota: formData.mascota,
-    intereses: formData.intereses,
-    comentarios: formData.comentarios,
-  }
-}
-
-/**
- * Custom hook: estado y handlers del formulario de contacto (TPF).
- * Registra cambios de inputs y submit en consola.
- */
+// Hook del formulario de contacto (TPF - estados + consola)
 export function useContactForm() {
-  const [formData, setFormData] = useState(INITIAL_FORM)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const logFieldUpdate = (field, value) => {
-    console.log('[Contacto] input:', { campo: field, valor: value })
-  }
+  const [formData, setFormData] = useState(formularioVacio)
+  const [mostrarAviso, setMostrarAviso] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setIsSubmitted(false)
-    logFieldUpdate(name, value)
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setMostrarAviso(false)
+    console.log(`Cambio en ${name}:`, value)
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleInteresChange = (event) => {
     const { value, checked } = event.target
-    setIsSubmitted(false)
-    setFormData((prev) => {
-      const intereses = checked
-        ? [...prev.intereses, value]
-        : prev.intereses.filter((item) => item !== value)
-      logFieldUpdate('intereses', intereses)
-      return { ...prev, intereses }
-    })
+    setMostrarAviso(false)
+
+    let nuevosIntereses = [...formData.intereses]
+    if (checked) {
+      nuevosIntereses.push(value)
+    } else {
+      nuevosIntereses = nuevosIntereses.filter((item) => item !== value)
+    }
+
+    console.log('Intereses:', nuevosIntereses)
+    setFormData({ ...formData, intereses: nuevosIntereses })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const payload = buildPayload(formData)
-    console.log('[Contacto] submit:', payload)
-    setFormData({ ...INITIAL_FORM, intereses: [] })
-    setIsSubmitted(true)
-    console.log('[Contacto] reset: formulario limpiado tras enviar')
+    console.log('Formulario enviado:', formData)
+    setFormData({ ...formularioVacio, intereses: [] })
+    setMostrarAviso(true)
   }
 
   const handleReset = () => {
-    setFormData(INITIAL_FORM)
-    setIsSubmitted(false)
-    console.log('[Contacto] reset: formulario limpiado')
+    setFormData(formularioVacio)
+    setMostrarAviso(false)
+    console.log('Formulario vaciado')
   }
 
   return {
     formData,
-    isSubmitted,
+    mostrarAviso,
     handleChange,
     handleInteresChange,
     handleSubmit,

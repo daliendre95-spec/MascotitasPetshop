@@ -6,6 +6,7 @@ import ProductosPage from './pages/ProductosPage'
 import GaleriaPage from './pages/GaleriaPage'
 import ContactoPage from './pages/ContactoPage'
 
+// Rutas principales del sitio (TPF)
 function App() {
   return (
     <Routes>

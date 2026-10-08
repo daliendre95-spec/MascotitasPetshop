@@ -2,34 +2,36 @@ import { NavLink } from 'react-router-dom'
 
 import '../styles/navbar.css'
 
-const navLinks = [
-  { to: '/', label: 'Inicio', end: true },
-  { to: '/productos', label: 'Productos' },
-  { to: '/galeria', label: 'Galería' },
-  { to: '/contacto', label: 'Contacto' },
-]
-
 function Navbar() {
   return (
     <header className="site-header">
       <div className="container">
         <NavLink to="/" className="logo">
-          <i className="fa-solid fa-dog" aria-hidden="true" />
+          <i className="fa-solid fa-dog" />
           MASCOTITAS
         </NavLink>
-        <nav className="main-nav" aria-label="Navegación principal">
+        <nav className="main-nav">
           <ul>
-            {navLinks.map(({ to, label, end }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  end={end}
-                  className={({ isActive }) => (isActive ? 'active' : undefined)}
-                >
-                  {label}
-                </NavLink>
-              </li>
-            ))}
+            <li>
+              <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+                Inicio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/productos" className={({ isActive }) => (isActive ? 'active' : '')}>
+                Productos
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/galeria" className={({ isActive }) => (isActive ? 'active' : '')}>
+                Galería
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contacto" className={({ isActive }) => (isActive ? 'active' : '')}>
+                Contacto
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>

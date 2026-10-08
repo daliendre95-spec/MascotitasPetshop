@@ -1,4 +1,5 @@
-export const galleryItems = [
+// mismas fotos que tenia en galeria.html
+export const fotosGaleria = [
   {
     id: 1,
     src: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80&auto=format&fit=crop',

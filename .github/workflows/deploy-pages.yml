@@ -1,4 +1,4 @@
-name: Deploy production build to GitHub Pages
+name: Subir build a GitHub Pages
 
 on:
   push:
@@ -12,22 +12,20 @@ jobs:
   github-pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - name: Install and build
+      - name: npm install y build
         run: |
           npm ci
           npm run build
           cp dist/index.html dist/404.html
 
-      - name: Deploy built files to gh-pages branch
+      - name: publicar en rama gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

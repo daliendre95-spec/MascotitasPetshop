@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom'
 
 import '../styles/card.css'
 
-function Card({ image, title, description, linkTo = '/contacto', linkLabel = 'Consultar' }) {
+function Card({ imagen, titulo, descripcion }) {
   return (
     <article className="card">
-      <img src={image} alt={title} />
+      <img src={imagen} alt={titulo} />
       <div className="card-body">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <Link to={linkTo} className="btn btn-secondary">
-          {linkLabel}
+        <h3>{titulo}</h3>
+        <p>{descripcion}</p>
+        <Link to="/contacto" className="btn btn-secondary">
+          Consultar
         </Link>
       </div>
     </article>

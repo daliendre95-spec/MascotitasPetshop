@@ -1,11 +1,11 @@
 import Card from '../components/Card'
-import { productos } from '../assets/data/productos'
+import { listaProductos } from '../assets/data/productos'
 import '../styles/page-hero.css'
 import '../styles/cards-section.css'
 
 function ProductosPage() {
   return (
-    <>
+    <div>
       <section className="page-hero">
         <div className="container">
           <h1>Nuestros Productos</h1>
@@ -15,12 +15,17 @@ function ProductosPage() {
 
       <section className="cards-section">
         <div className="cards-grid">
-          {productos.map((producto) => (
-            <Card key={producto.id} {...producto} />
+          {listaProductos.map((prod) => (
+            <Card
+              key={prod.id}
+              imagen={prod.imagen}
+              titulo={prod.titulo}
+              descripcion={prod.descripcion}
+            />
           ))}
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

@@ -1,66 +1,42 @@
 import { useContactForm } from '../hooks/useContactForm'
 import '../styles/contact.css'
 
-const MOTIVO_OPTIONS = [
-  { value: 'consulta', label: 'Consulta sobre producto' },
-  { value: 'pedido', label: 'Realizar un pedido' },
-  { value: 'envio', label: 'Consulta de envío' },
-  { value: 'mayorista', label: 'Compra mayorista' },
-]
-
-const MASCOTA_OPTIONS = [
-  { value: 'perro', label: 'Perro' },
-  { value: 'gato', label: 'Gato' },
-  { value: 'otro', label: 'Otra mascota' },
-]
-
-const INTERES_OPTIONS = [
-  { value: 'alimento', label: 'Alimento' },
-  { value: 'accesorios', label: 'Accesorios' },
-  { value: 'higiene', label: 'Higiene y cuidado' },
-]
-
-const CONTACT_INFO = [
-  { icon: 'fa-solid fa-location-dot', text: 'Av. Santa Fe 2456, CABA, Argentina' },
-  { icon: 'fa-solid fa-phone', text: '+54 11 4789-1234' },
-  { icon: 'fa-solid fa-envelope', text: 'hola@mascotitas.com.ar' },
-  { icon: 'fa-solid fa-clock', text: 'Lunes a Sábado de 9:00 a 20:00 hs' },
-]
-
 function Contact() {
-  const { formData, isSubmitted, handleChange, handleInteresChange, handleSubmit, handleReset } =
+  const { formData, mostrarAviso, handleChange, handleInteresChange, handleSubmit, handleReset } =
     useContactForm()
 
   return (
     <section className="contact-section">
       <div className="container contact-wrapper">
         <div className="contact-info">
-          {CONTACT_INFO.map(({ icon, text }) => (
-            <div key={text} className="contact-info-item">
-              <i className={icon} aria-hidden="true" />
-              <p>{text}</p>
-            </div>
-          ))}
+          <div className="contact-info-item">
+            <i className="fa-solid fa-location-dot" />
+            <p>Av. Santa Fe 2456, CABA, Argentina</p>
+          </div>
+          <div className="contact-info-item">
+            <i className="fa-solid fa-phone" />
+            <p>+54 11 4789-1234</p>
+          </div>
+          <div className="contact-info-item">
+            <i className="fa-solid fa-envelope" />
+            <p>hola@mascotitas.com.ar</p>
+          </div>
+          <div className="contact-info-item">
+            <i className="fa-solid fa-clock" />
+            <p>Lunes a Sábado de 9:00 a 20:00 hs</p>
+          </div>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} onReset={handleReset}>
-          {isSubmitted && (
-            <div
-              className="contact-success alert alert-success"
-              role="status"
-              aria-live="polite"
-            >
-              <i className="fa-solid fa-circle-check" aria-hidden="true" />
-              <span>
-                ¡Formulario enviado! En breve nos contactaremos con vos. ¡Gracias por escribirnos!
-              </span>
-            </div>
+          {mostrarAviso && (
+            <p className="contact-success alert alert-success">
+              <i className="fa-solid fa-circle-check" /> Recibimos tu mensaje. Te vamos a
+              contactar pronto.
+            </p>
           )}
 
           <div className="form-group mb-3">
-            <label htmlFor="nombre" className="form-label">
-              Nombre
-            </label>
+            <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
               id="nombre"
@@ -74,9 +50,7 @@ function Contact() {
           </div>
 
           <div className="form-group mb-3">
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -90,9 +64,7 @@ function Contact() {
           </div>
 
           <div className="form-group mb-3">
-            <label htmlFor="telefono" className="form-label">
-              Teléfono
-            </label>
+            <label htmlFor="telefono">Teléfono</label>
             <input
               type="tel"
               id="telefono"
@@ -106,9 +78,7 @@ function Contact() {
           </div>
 
           <div className="form-group mb-3">
-            <label htmlFor="motivo" className="form-label">
-              Motivo de contacto
-            </label>
+            <label htmlFor="motivo">Motivo de contacto</label>
             <select
               id="motivo"
               name="motivo"
@@ -118,50 +88,83 @@ function Contact() {
               required
             >
               <option value="">Seleccioná una opción</option>
-              {MOTIVO_OPTIONS.map(({ value, label }) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
+              <option value="consulta">Consulta sobre producto</option>
+              <option value="pedido">Realizar un pedido</option>
+              <option value="envio">Consulta de envío</option>
+              <option value="mayorista">Compra mayorista</option>
             </select>
           </div>
 
           <fieldset className="form-group mb-3">
             <legend>¿Qué mascota tenés?</legend>
-            {MASCOTA_OPTIONS.map(({ value, label }) => (
-              <label key={value}>
-                <input
-                  type="radio"
-                  name="mascota"
-                  value={value}
-                  checked={formData.mascota === value}
-                  onChange={handleChange}
-                />
-                {label}
-              </label>
-            ))}
+            <label>
+              <input
+                type="radio"
+                name="mascota"
+                value="perro"
+                checked={formData.mascota === 'perro'}
+                onChange={handleChange}
+              />
+              Perro
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mascota"
+                value="gato"
+                checked={formData.mascota === 'gato'}
+                onChange={handleChange}
+              />
+              Gato
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mascota"
+                value="otro"
+                checked={formData.mascota === 'otro'}
+                onChange={handleChange}
+              />
+              Otra mascota
+            </label>
           </fieldset>
 
           <fieldset className="form-group mb-3">
             <legend>¿Qué te interesa? (podés elegir varios)</legend>
-            {INTERES_OPTIONS.map(({ value, label }) => (
-              <label key={value}>
-                <input
-                  type="checkbox"
-                  name="interes"
-                  value={value}
-                  checked={formData.intereses.includes(value)}
-                  onChange={handleInteresChange}
-                />
-                {label}
-              </label>
-            ))}
+            <label>
+              <input
+                type="checkbox"
+                name="interes"
+                value="alimento"
+                checked={formData.intereses.includes('alimento')}
+                onChange={handleInteresChange}
+              />
+              Alimento
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="interes"
+                value="accesorios"
+                checked={formData.intereses.includes('accesorios')}
+                onChange={handleInteresChange}
+              />
+              Accesorios
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="interes"
+                value="higiene"
+                checked={formData.intereses.includes('higiene')}
+                onChange={handleInteresChange}
+              />
+              Higiene y cuidado
+            </label>
           </fieldset>
 
           <div className="form-group mb-3">
-            <label htmlFor="comentarios" className="form-label">
-              Comentarios
-            </label>
+            <label htmlFor="comentarios">Comentarios</label>
             <textarea
               id="comentarios"
               name="comentarios"
@@ -175,7 +178,7 @@ function Contact() {
 
           <div className="form-actions">
             <button type="submit" className="btn btn-primary">
-              <i className="fa-solid fa-paper-plane" aria-hidden="true" />
+              <i className="fa-solid fa-paper-plane" />
               Enviar
             </button>
             <button type="reset" className="btn btn-secondary">

@@ -1,10 +1,10 @@
 import Gallery from '../components/Gallery'
-import { galleryItems } from '../assets/data/galeria'
+import { fotosGaleria } from '../assets/data/galeria'
 import '../styles/page-hero.css'
 
 function GaleriaPage() {
   return (
-    <>
+    <div>
       <section className="page-hero">
         <div className="container">
           <h1>Galería de Mascotas</h1>
@@ -12,8 +12,8 @@ function GaleriaPage() {
         </div>
       </section>
 
-      <Gallery items={galleryItems} />
-    </>
+      <Gallery items={fotosGaleria} />
+    </div>
   )
 }
 

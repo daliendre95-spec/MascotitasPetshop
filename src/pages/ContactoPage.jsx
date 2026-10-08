@@ -3,7 +3,7 @@ import '../styles/page-hero.css'
 
 function ContactoPage() {
   return (
-    <>
+    <div>
       <section className="page-hero">
         <div className="container">
           <h1>Contacto</h1>
@@ -12,7 +12,7 @@ function ContactoPage() {
       </section>
 
       <Contact />
-    </>
+    </div>
   )
 }
 
