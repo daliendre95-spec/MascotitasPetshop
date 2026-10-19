@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MASCOTITAS | Contacto</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome (iconografía) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Hojas de Estilo -->
+  <link rel="stylesheet" href="./assets/css/general.css" />
+  <link rel="stylesheet" href="./assets/css/pages/contacto.css" />
+</head>
+<body>
+
+  <!-- Header  -->
+  <header class="site-header">
+    <div class="container">
+      <a href="./index.html" class="logo">
+        <i class="fa-solid fa-dog"></i>
+        MASCOTITAS
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="./productos.html">Productos</a></li>
+          <li><a href="./galeria.html">Galería</a></li>
+          <li><a href="./contacto.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Header Hero corto de Contacto -->
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contacto</h1>
+        <p>Estamos para ayudarte con tu pedido o cualquier consulta sobre productos.</p>
+      </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section class="contact-section">
+      <div class="container contact-wrapper">
+
+        <!-- Lista de Información a la Izquierda -->
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <p>Av. Santa Fe 2456, CABA, Argentina</p>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <p>+54 11 4789-1234</p>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <p>hola@mascotitas.com.ar</p>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <p>Lunes a Sábado de 9:00 a 20:00 hs</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta Formulario a la Derecha -->
+        <form class="contact-form" action="#" method="post">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="11 1234-5678" required>
+          </div>
+
+          <div class="form-group">
+            <label for="motivo">Motivo de contacto</label>
+            <select id="motivo" name="motivo" required>
+              <option value="">Seleccioná una opción</option>
+              <option value="consulta">Consulta sobre producto</option>
+              <option value="pedido">Realizar un pedido</option>
+              <option value="envio">Consulta de envío</option>
+              <option value="mayorista">Compra mayorista</option>
+            </select>
+          </div>
+
+          <fieldset class="form-group">
+            <legend>¿Qué mascota tenés?</legend>
+            <label>
+              <input type="radio" name="mascota" value="perro" checked>
+              Perro
+            </label>
+            <label>
+              <input type="radio" name="mascota" value="gato">
+              Gato
+            </label>
+            <label>
+              <input type="radio" name="mascota" value="otro">
+              Otra mascota
+            </label>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <legend>¿Qué te interesa? (podés elegir varios)</legend>
+            <label>
+              <input type="checkbox" name="interes" value="alimento">
+              Alimento
+            </label>
+            <label>
+              <input type="checkbox" name="interes" value="accesorios">
+              Accesorios
+            </label>
+            <label>
+              <input type="checkbox" name="interes" value="higiene">
+              Higiene y cuidado
+            </label>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="comentarios">Comentarios</label>
+            <textarea id="comentarios" name="comentarios" placeholder="Contanos qué producto buscás o tu consulta..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Enviar
+            </button>
+            <button type="reset" class="btn btn-secondary">Limpiar</button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 MASCOTITAS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
